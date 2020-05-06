@@ -12,7 +12,29 @@ services:
     ports:
       - 3030:3030
 
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    restart: always
+    environment:
+      - INFLUXDB_DB=devdb
+      - INFLUXDB_ADMIN_ENABLED=true
+      - INFLUXDB_ADMIN_USER=root
+      - INFLUXDB_ADMIN_PASSWORD=root 
+    networks:
+      - lenses-box
+    ports:
+      - 8086:8086
+      - 8083:8083
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    networks:
+      - lenses-box
+    ports:
+      - 3000:3000
+
 networks:
   lenses-box:
     driver: bridge
-
