@@ -3,7 +3,7 @@ services:
 
   lenses:
     image: lensesio/box
-    container_name: lenses
+    container_name: lenses-dev
     restart: always
     environment:
       EULA: "${LICENSE}"
